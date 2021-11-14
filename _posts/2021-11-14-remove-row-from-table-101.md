@@ -1,8 +1,10 @@
 ---
 layout: default
-title:  "Remove a row from a list"
+title:  "Using the \"Delete item\" action"
 ---
 
-## TESTING
+## Using the "Delete item" action
+
+In this post we'll see how to use the `Delete item` action.
 
 **HOLA MUNDO** asdf
