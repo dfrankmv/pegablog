@@ -43,11 +43,10 @@ Having trouble with Pages? Check out our [documentation](https://docs.github.com
 
 ## POSTS
 
-<ul>
+<ul class="list-of-posts">
   {% for post in site.posts %}
     <li>
       <a href="/{{site.github.repository_name}}{{ post.url }}">{{ post.title }}</a>
-      {{ post.excerpt }}
     </li>
   {% endfor %}
 </ul>
