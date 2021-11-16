@@ -13,11 +13,11 @@ First of all, we can find this action in the List category as shown in the next 
 
 We can use this action inside a row in a _Table_ or a section in a _Repeating Dynamic Layout_. 
 
-In the following image we have added the Delete item action in the 🗑 icon. 
+In the following gif we have a Table and we've added the _Delete item action_ in the 🗑 icon. 
 
 ![image](https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/SMYeIXpBrj.gif)
 
-In the following image we have added the _Delete item action_ in the "Remove" button.
+In the following image we have a _Repeating Dynamic Layout_ and we've added the _Delete item action_ in the "Remove" button.
 
 ![image](https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/qCSBer1VzN.gif)
 
