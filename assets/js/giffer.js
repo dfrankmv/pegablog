@@ -204,11 +204,7 @@
       // setting the actual image size
       con.setAttribute(
         'style',
-        'position:relative;cursor:pointer;width:' +
-          dims.w +
-          'px;height:' +
-          dims.h +
-          'px;background:none;border:none;padding:0;'
+        'position:relative;cursor:pointer;width:calc(100% + 40px);background:none;border:none;padding:0;'
       )
 
       c.style.width = '100%'
