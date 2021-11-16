@@ -21,7 +21,7 @@ In the following image we have a _Repeating Dynamic Layout_ and we've added the 
 
 ![image](https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/qCSBer1VzN.gif)
 
-<div class="warning">
+<div class="block warning">
     This is a warning
 </div>
 
