@@ -17,11 +17,9 @@ In the following gif we have a Table and we've added the _Delete item action_ in
 
 <img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/SMYeIXpBrj.gif" />
 
-![image](https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/SMYeIXpBrj.gif)
+In the following gif we have a _Repeating Dynamic Layout_ and we've added the _Delete item action_ in the "Remove" button.
 
-In the following image we have a _Repeating Dynamic Layout_ and we've added the _Delete item action_ in the "Remove" button.
-
-![image](https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/qCSBer1VzN.gif)
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/qCSBer1VzN.gif" />
 
 <div class="block warning">
     This is a warning
