@@ -22,7 +22,7 @@ In the following gif we have a _Repeating Dynamic Layout_ and we've added the _D
 <img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/qCSBer1VzN.gif" />
 
 <div class="block warning">
-    In order for the action to work, it is necessary to make the table Inline editable.
+    ⚠ In order for the action to work, it is necessary to make the table Inline editable.
     <img src="https://user-images.githubusercontent.com/19811297/141969058-552c5bbc-0e44-45a3-9198-558b003fcf1a.png" />
 </div>
 
