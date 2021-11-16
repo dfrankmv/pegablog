@@ -220,8 +220,7 @@
         con.style.width = 'inherit'
         con.style.height = h
       } else {
-        con.style.width = dims.w + 'px'
-        con.style.height = dims.h + 'px'
+        con.style.width = "calc(100% + 40px)"
       }
     }
     el.src = url
