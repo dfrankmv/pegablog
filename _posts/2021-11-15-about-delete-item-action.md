@@ -24,7 +24,7 @@ In the following gif we have a Table and we've added the _Delete item action_ in
 
 In the following gif we have a _Repeating Dynamic Layout_ and we've added the _Delete item action_ in the "Remove" button.
 
-<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/PlKw0D30eC.gif" />
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/xt4ddcBPwT.gif" />
 
 The good thing about this action is that it actually removes the page from the pagelist, so it's not just a visual effect.
 
