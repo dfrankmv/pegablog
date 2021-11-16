@@ -11,7 +11,12 @@ First of all, we can find this action in the List category as shown in the next 
 
 ![image](https://user-images.githubusercontent.com/19811297/141845370-be3a5538-aada-429b-8b5d-c5be8579be58.png)
 
-We can use this action inside a row in a _Table_ or a section in a _Repeating Dynamic Layout_. 
+We can use this action inside a row in a _Table_ or a section in a _Repeating Dynamic Layout_.
+
+<div class="block warning">
+    In order for the action to work, it is necessary to make the row Inline editable.
+    <img src="https://user-images.githubusercontent.com/19811297/141969058-552c5bbc-0e44-45a3-9198-558b003fcf1a.png" />
+</div>
 
 In the following gif we have a Table and we've added the _Delete item action_ in the 🗑 icon. 
 
@@ -19,12 +24,7 @@ In the following gif we have a Table and we've added the _Delete item action_ in
 
 In the following gif we have a _Repeating Dynamic Layout_ and we've added the _Delete item action_ in the "Remove" button.
 
-<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/qCSBer1VzN.gif" />
-
-<div class="block warning">
-    In order for the action to work, it is necessary to make the row Inline editable.
-    <img src="https://user-images.githubusercontent.com/19811297/141969058-552c5bbc-0e44-45a3-9198-558b003fcf1a.png" />
-</div>
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/PlKw0D30eC.gif" />
 
 The good thing about this action is that it actually removes the page from the pagelist, so it's not just a visual effect.
 
@@ -37,7 +37,7 @@ The good thing about this action is that it actually removes the page from the p
 
 ### Display confirmation message
 
-
+Let's focus on the option _Display confirmation message_.
 
 ## Notes
 1. This action works when used in:
