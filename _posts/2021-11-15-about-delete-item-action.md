@@ -15,6 +15,8 @@ We can use this action inside a row in a _Table_ or a section in a _Repeating Dy
 
 In the following gif we have a Table and we've added the _Delete item action_ in the 🗑 icon. 
 
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/SMYeIXpBrj.gif" />
+
 ![image](https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/SMYeIXpBrj.gif)
 
 In the following image we have a _Repeating Dynamic Layout_ and we've added the _Delete item action_ in the "Remove" button.
