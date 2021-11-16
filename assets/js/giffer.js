@@ -66,7 +66,7 @@
             'top: 16px'
           ].join(';')
 
-    cls ? con.setAttribute('class', el.getAttribute('class') + " gif") : null
+    cls ? con.setAttribute('class', el.getAttribute('class') + " gif") : con.setAttribute('class', "gif")
     id ? con.setAttribute('id', el.getAttribute('id')) : null
     con.setAttribute(
       'style',
