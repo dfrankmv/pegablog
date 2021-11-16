@@ -44,6 +44,13 @@
     {% endif %}
       <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
     </footer>
+    <script src="{{ '/assets/js/giffer.js' | relative_url }}"></script>
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+    <script>
+      window.onload = function() {
+        Gifffer();
+      }
+    </script>
   </body>
 </html>
