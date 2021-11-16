@@ -13,7 +13,7 @@ First of all, we can find this action in the List category as shown in the next 
 
 We can use this action inside a row in a _Table_ or a section in a _Repeating Dynamic Layout_. For example, in the following images we have added the Delete item action in the 🗑 icon and in the "Remove" button. 
 
-![image](https://github.com/dfrankmv/pegablog/blob/gh-pages/img/SMYeIXpBrj.gif)
+![image](https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/SMYeIXpBrj.gif)
 
 ## Notes
 1. This action works when used in:
