@@ -37,7 +37,9 @@ The good thing about this action is that it actually removes the page from the P
 
 ### Display confirmation message
 
-Sometimes we need to display a popup with a confirmation message in order to avoid an accidental deletion. For this purpose we will check the option _Display confirmation message_ in the configuration of the _Delete item_ action (it's the only configuration).
+Sometimes we need to display a popup with a confirmation message in order to avoid an accidental deletion. For this purpose we will check the _Display confirmation message_ option in the configuration of the _Delete item_ action (it's the only configuration).
+
+![image](https://user-images.githubusercontent.com/19811297/142224724-402e0c7b-9258-4b9c-829f-3e8df937d4c8.png)
 
 <div class="block important">
     The <em>Display confirmation message</em> option <strong>won't work</strong> if the Table is not optimized (template table), so we need to make sure that the <em>Optimize code</em> is selected (checking the <em>Allow</em> option) in the Table configuration.
