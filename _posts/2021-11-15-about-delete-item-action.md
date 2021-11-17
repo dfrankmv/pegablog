@@ -14,7 +14,7 @@ First of all, we can find this action in the List category as shown in the next 
 We can use this action inside a row in a Table or a section in a Repeating Dynamic Layout.
 
 <div class="block warning">
-    The <em>Delete item</em> action won't work in a Table which has the option <em>None</em> selected in the <em>Row editing</em> options.
+    The <em>Delete item</em> action <strong>won't work</strong> in a Table which has the option <em>None</em> selected in the <em>Row editing</em> options.
     <img src="https://user-images.githubusercontent.com/19811297/142218077-c45b0b17-6cb1-44df-835e-6ccc84910792.png" />
 </div>
 
@@ -31,7 +31,7 @@ The good thing about this action is that it actually removes the page from the P
 <img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/zLzhMNY5EU.gif" />
 
 <div class="block important">
-    If the data source is a Data Page in <strong>read only</strong> mode, then the <em>Delete item</em> action won't be able to remove the page from the Data Page list.
+    The <em>Delete item</em> action <strong>won't work</strong> if the Data Source is a Page List in <em>Read only</em>.
     <img src="https://user-images.githubusercontent.com/19811297/141976362-6fbb50c6-2f7a-418f-982f-4c47ad4ce06b.png" />
 </div>
 
