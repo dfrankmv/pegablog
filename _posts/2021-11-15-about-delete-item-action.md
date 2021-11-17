@@ -14,8 +14,8 @@ First of all, we can find this action in the List category as shown in the next 
 We can use this action inside a row in a Table or a section in a Repeating Dynamic Layout.
 
 <div class="block warning">
-    In order for the action to work, it is necessary to make the row Inline editable.
-    <img src="https://user-images.githubusercontent.com/19811297/141969058-552c5bbc-0e44-45a3-9198-558b003fcf1a.png" />
+    The <em>Delete item</em> action won't work in a Table which has the option <em>None</em> selected in the <em>Row editing</em> options.
+    <img src="https://user-images.githubusercontent.com/19811297/142218077-c45b0b17-6cb1-44df-835e-6ccc84910792.png" />
 </div>
 
 The following animation shows the effect of the _Delete item_ action (applied to the 🗑 icon) in a Table. 
