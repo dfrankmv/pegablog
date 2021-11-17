@@ -91,7 +91,13 @@ header p {
 }
 
 .important em, .warning em {
-	color: #73460d;
-	font-style: normal;
-	font-size: 90%;
+    color: #73460d;
+    font-style: normal;
+    font-size: 90%;
+}
+
+em {
+    font-style: normal;
+    font-size: 90%;
+    color: #b70707;
 }
