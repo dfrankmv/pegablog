@@ -32,7 +32,6 @@ The good thing about this action is that it actually removes the page from the P
 
 <div class="block important">
     If the data source is a Data Page in <strong>read only</strong> mode, then the <em>Delete item</em> action won't be able to remove the page from the Data Page list.
-    
     <img src="https://user-images.githubusercontent.com/19811297/141976362-6fbb50c6-2f7a-418f-982f-4c47ad4ce06b.png" />
 </div>
 
