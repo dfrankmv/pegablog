@@ -31,7 +31,7 @@ The good thing about this action is that it actually removes the page from the P
 <img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/zLzhMNY5EU.gif" />
 
 <div class="block important">
-    The <em>Delete item</em> action <strong>won't work</strong> if the Data Source is a Page List in <em>Read only</em> mode.
+    The <em>Delete item</em> action <strong>won't work</strong> if the Data Source is a Data Page in <em>Read only</em> mode.
     <img src="https://user-images.githubusercontent.com/19811297/141976362-6fbb50c6-2f7a-418f-982f-4c47ad4ce06b.png" />
 </div>
 
