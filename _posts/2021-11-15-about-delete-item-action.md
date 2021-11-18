@@ -28,7 +28,7 @@ The following animation shows the effect of the _Delete item_ action (applied to
 
 The good thing about this action is that it actually removes the page from the Page List, so it's not just a visual effect. The following animation shows how the page _CountryList.pxResults(2)_ is removed from both the Table and the Page List.
 
-<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/zLzhMNY5EU.gif" />
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/8CL0nGgwDN.gif" />
 
 <div class="block important">
     The <em>Delete item</em> action <strong>won't work</strong> if the Data Source is a Data Page in <em>Read only</em> mode.
