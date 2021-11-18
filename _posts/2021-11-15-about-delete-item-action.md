@@ -46,12 +46,10 @@ Sometimes we need to display a popup with a confirmation message in order to avo
     <img src="https://user-images.githubusercontent.com/19811297/142223013-7e6d801e-3dd6-46ed-9949-1fb538fd8328.png" />
 </div>
 
+The following animation shows the effect of the _Display confirmation message_ option.
+
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/VhhLTDkGH0.gif" />
+
 ### pzRemoveFromRepeatSource
-wip
-
-## Notes
-1. This action works when used in:
-    - A grid table
-    - A repeating dynamic layout
-
+The _Delete item_ action executes the _pzRemoveFromRepeatSource_ activity.
 
