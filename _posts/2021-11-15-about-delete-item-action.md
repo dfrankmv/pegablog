@@ -48,7 +48,7 @@ Sometimes we need to display a popup with a confirmation message in order to avo
 
 The following animation shows the effect of the _Display confirmation message_ option.
 
-<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/VhhLTDkGH0.gif" />
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/JOQJwuhEsr.gif" />
 
 ### pzRemoveFromRepeatSource
 The _Delete item_ action executes the _pzRemoveFromRepeatSource_ activity.
