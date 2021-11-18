@@ -20,7 +20,7 @@ We can use this action inside a row in a Table or a section in a Repeating Dynam
 
 The following animation shows the effect of the _Delete item_ action (applied to the 🗑 icon) in a Table. 
 
-<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/SMYeIXpBrj.gif" />
+<img data-gifffer="https://raw.githubusercontent.com/dfrankmv/pegablog/gh-pages/img/QIaGe12ltC.gif" />
 
 The following animation shows the effect of the _Delete item_ action (applied to the "Remove" button) in a Repeating Dynamic Layout.
 
