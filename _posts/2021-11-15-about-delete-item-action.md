@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "About the \"Delete item\" action"
-id: ZFehbGWN4Z
+id: VV3SKOR3Z2
 ---
 
 <h2 id="about-the-delete-item-action">About the “Delete item” action</h2>
