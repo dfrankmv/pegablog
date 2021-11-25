@@ -1,3 +1,8 @@
+---
+layout: post
+title:  "About the \"Delete item\" action"
+---
+
 <h2 id="about-the-delete-item-action">About the “Delete item” action</h2>
 
 <p>This action is pretty simple and straightforward: It just removes an item from a Table or a Repeating Dynamic Layout.</p>
