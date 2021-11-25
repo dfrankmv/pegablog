@@ -8,6 +8,7 @@ p, ul, ol, table, pre, dl {
 }
 
 img {
+    display: block;
     max-width: calc(100% + 40px);
     margin-left: -20px;
     margin-bottom: 0.8em;
@@ -32,7 +33,7 @@ img {
     margin: 0 auto;
     display: block;
     margin-top: .8em;
-    border: 1px solid black;
+    border: 1px solid #0000004d;
     max-width: 100%;
 }
 
