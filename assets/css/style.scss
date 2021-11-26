@@ -56,6 +56,39 @@ img {
     font-style: italic;
 }
 
+.tip {
+    margin-left: -20px;
+    margin-bottom: .8em;
+    width: 100%;
+    padding: .8em 20px;
+    margin-left: -20px;
+    background-color: #abbae1;
+    font-style: italic;
+    color: #000;
+}
+
+.tip b {
+    font-weight: bold;
+}
+
+.tip img {
+    margin: 0 auto;
+    display: block;
+    margin-top: .8em;
+    border: 1px solid #0000004d;
+    max-width: 100%;
+}
+
+.tip::before {
+    content: "Tip";
+    display: block;
+    font-weight: bold
+}
+
+.tip em, .tip i {
+    font-style: italic;
+}
+
 .gif {
     margin-left: -20px;
     margin-bottom: .8em;
