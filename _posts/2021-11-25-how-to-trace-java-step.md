@@ -17,7 +17,7 @@ id: YPZFUDIVRK
 <div class="block important">
   In order to see the message in the tracer we need to add the <i>Debug</i> event to the list of Event types to trace.
 
-  <img src="https://i.postimg.cc/nhcFwrb4/YPZFUDIVRK-Settings.png" alt="">
+  <img src="https://i.postimg.cc/x8zgKMP9/YPZFUDIVRK-Settings.png" alt="">
 
   </div>
 
