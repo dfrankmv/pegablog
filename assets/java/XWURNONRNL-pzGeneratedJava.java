@@ -580,10 +580,10 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
                 TaskConnectors_Decision1_circum0();
             else if (pyLastFlowStep.equals("SubProcessSF1"))
                 TaskConnectors_SubProcessSF1_circum0();
-            else if (pyLastFlowStep.equals("AssignmentSF1"))
-                TaskConnectors_AssignmentSF1_circum0();
             else if (pyLastFlowStep.equals("Start62"))
                 TaskConnectors_Start62_circum0();
+            else if (pyLastFlowStep.equals("AssignmentSF1"))
+                TaskConnectors_AssignmentSF1_circum0();
             else if (pyLastFlowStep.equals("AssignmentSF2"))
                 TaskConnectors_AssignmentSF2_circum0();
             else if (pyLastFlowStep.equals("AssignmentSF3"))
@@ -633,10 +633,10 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
                 Task_END66_circum0();
             else if (nextFlowStepToRun.equals("SubProcessSF1"))
                 Task_SubProcessSF1_circum0();
-            else if (nextFlowStepToRun.equals("AssignmentSF1"))
-                Task_AssignmentSF1_circum0();
             else if (nextFlowStepToRun.equals("Start62"))
                 Task_Start62_circum0();
+            else if (nextFlowStepToRun.equals("AssignmentSF1"))
+                Task_AssignmentSF1_circum0();
             else if (nextFlowStepToRun.equals("AssignmentSF2"))
                 Task_AssignmentSF2_circum0();
             else if (nextFlowStepToRun.equals("AssignmentSF3"))
@@ -1070,6 +1070,7 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
     //	RULE-UTILITY-FUNCTION FLOWFUA TASK_FLOW #20180713T133137.845 GMT:20180713T133137.845 GMT
     //	RULE-UTILITY-FUNCTION FLOWFUA TASK_FLOWEND #20180713T133137.851 GMT:20180713T133137.851 GMT
     //	RULE-UTILITY-FUNCTION FLOWFUA TASK_FLOWSTART #20190628T101300.717 GMT:20190731T090756.707 GMT
+    //	RULE-UTILITY-FUNCTION FLOWFUA TASK_FORK #20180713T133139.003 GMT:20180713T133139.003 GMT
     //	RULE-UTILITY-FUNCTION FLOWUTILITIES PZGETDISPLAYABLEINCOMINGSHAPEIDS--(CLIPBOARDPAGE,STRING) #20180713T133139.140 GMT:20180713T133139.140 GMT
     //	RULE-UTILITY-FUNCTION LOOKUPLIST GETCACHEDDATA #20180713T131743.589 GMT:20180713T131743.589 GMT
     //	RULE-UTILITY-FUNCTION LOOKUPLIST GETCACHEDDATA--(STRING,STRING,BO59DE8A46A59D8070C4228B2B318D4E85 #20180713T131743.593 GMT:20180713T131743.593 GMT
@@ -1110,7 +1111,7 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
      * @return	32 byte hash of that list using MD5
      */
     public static String getFUAContentHash() {
-        return "b8355b434af183e8be4f5c7ca0ed5219";
+        return "82948fb729a00b9019fa1800eb4d715f";
     }
 
     public String getDefinitionAppliesToClass() {
@@ -1609,46 +1610,10 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
         // Create a parameter page for this task
         ParameterPage newParamsPage = createNewParamsPage(taskName);
 
-        // Flow Decision Start tracer message
-        LogTraceEvent(mRuleSet, ".pySelected != true",
-                flowName + " - Decision", "Flow Decision Start", "",
-                mFlowHandle, taskName);
-
-        // Expression: 
-        String RowInput = "";
-        String result = "";
-        try {
-            // Expression: .pySelected != true
-            boolean bDecisionResult = (scalarValueQuery_1.resolveToBoolean(
-                    tools, myStepPage, ImmutablePropertyInfo.TYPE_TRUEFALSE) != true);
-            if (bDecisionResult == true)
-                result = "true";
-            else
-                result = "false";
-        } catch (com.pega.pegarules.pub.generator.RuleNotFoundException e) {
-            if (bDraftMode) {
-                bCalledNonExistentRule = true;
-            } else {
-                ProblemFlow(e, taskName);
-                return;
-            }
-        }
-        // Make sure there wasn't a problem with the Decision Rule
-        if (tools.getParamValue("ExpressionStatus")
-                .equalsIgnoreCase("NotFound")) {
-            ProblemFlow("ProblemFlow_DecisionRuleInvalidProperty\tDecision\t"
-                    + tools.getParamValue("ExpressionInvalidProperty"),
-                    taskName);
-            return;
-        }
-
-        // Now we set the activity status - the main result of a DECISION shape
-        tools.findPage("pxThread").getProperty(".pxTaskStatus")
-                .setValue(result);
-        String strTraceMessage = ".pySelected != true";
-        String strTraceStep = flowName + " - Decision";
-        String strTraceEvent = "Flow Decision End";
-        String strTraceStatus = result;
+        String strTraceMessage = "";
+        String strTraceStep = flowName;
+        String strTraceEvent = "Flow Fork";
+        String strTraceStatus = "";
 
         if (currentFlow != null) {
             // Set step ending properties now that things have completed gracefully
@@ -1670,7 +1635,6 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
         LogTraceEvent(mRuleSet, strTraceMessage, strTraceStep, strTraceEvent,
                 strTraceStatus, mFlowHandle, taskName);
 
-        // Process the connectors to move on to the next task
         TaskConnectors_Decision1_circum0();
     }
 
@@ -1686,11 +1650,13 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
             return;
 
         // Evaluating the connectors (in order of likelihood)
-        strConnectorType = "STATUS";
-        strConnectorValue = "true";
+        strConnectorType = "WHEN";
+        strConnectorValue = "IsSelected";
         if (EvaluateConnector(strConnectorType, strConnectorValue, interestPage)) {
             // Trace Connector event
-            LogTraceEvent(mRuleSet, "true", flowName, "Flow Connector", "",
+            LogTraceEvent(mRuleSet,
+                    "Rule-Obj-When " + interestPage.getClassName()
+                            + ".IsSelected", flowName, "Flow Connector", "",
                     mFlowHandle, "");
 
             // Perform listed Property-Sets
@@ -1881,6 +1847,169 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
 
             // Now set the nextFlowStepToRun to this task
             nextFlowStepToRun = "END66";
+            return;
+        } else if (connectorFlowProblem == true)
+            return;
+
+        // Reaching this point means none of the connectors could be taken.
+        StuckFlow();
+    }
+
+    private void Task_Start62_circum0() {
+        String taskName = "Start62";
+        lastFlowStepRun = nextFlowStepToRun;
+        nextFlowStepToRun = ""; // reset it
+        bCalledNonExistentRule = false; // reset it
+        currentFlow.putString("pyCurrentFlowStep", "Start62");
+        currentFlow.putString(".pyCurrentFlowStepLabel", "");
+
+        // Create a vector of this task's contexts
+        java.util.Vector currentContexts = new java.util.Vector();
+
+        // Infinite loop checking code
+        if (taskCalledCount.containsKey(taskName)) {
+            Integer i = (Integer) taskCalledCount.get(taskName);
+            if (i.intValue() > 500) {
+                // we're probably in an infinite loop
+                ProblemFlow("ProblemFlow_InfiniteInnerLoop", taskName);
+                return;
+            } else
+                taskCalledCount.put(taskName, new Integer(i.intValue() + 1));
+        } else
+            taskCalledCount.put(taskName, new Integer(1));
+
+        // Remove old contexts
+        ClipboardProperty cpContexts = currentFlow.getProperty(".pyContexts");
+        java.util.Iterator cons = cpContexts.iterator();
+        while (cons.hasNext()) {
+            ClipboardProperty cpContext = (ClipboardProperty) cons.next();
+            ClipboardPage pgContext = cpContext.getPageValue();
+            String strContextID = pgContext.getString(".pyContextID");
+            if (!currentContexts.contains(strContextID)) {
+                LeaveContext_circum0(strContextID);
+            }
+        }
+
+        // Now add this task's new contexts 
+        ClipboardProperty cpContext;
+
+        // Create a parameter page for this task
+        ParameterPage newParamsPage = createNewParamsPage(taskName);
+
+        try {
+            // Expression: 
+            newParamsPage.putString("pxObjClass", "");
+        } catch (java.lang.IllegalArgumentException e) {
+            if (!bDraftMode) {
+                // We've got a flow problem; a page could have been passed in when a property was expected.
+                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
+                return;
+            }
+        }
+
+        try {
+            // Expression: 
+            newParamsPage.putString("CheckAvailability", "");
+        } catch (java.lang.IllegalArgumentException e) {
+            if (!bDraftMode) {
+                // We've got a flow problem; a page could have been passed in when a property was expected.
+                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
+                return;
+            }
+        }
+
+        // Create a temporary assignment page for the routing activity to access
+        ClipboardPage pg_tempAssignPage = tools.createPage("Assign-",
+                "AssignDefaults");
+        newParamsPage.putString("AssignPage", "AssignDefaults");
+
+        // Update the assignment with the routing skills information
+
+        // Flow Route Start tracer message
+        LogTraceEvent(mRuleSet, "Rule-Obj-Activity " + workPage.getClassName()
+                + ".ToCurrentOperator", flowName + " - " + taskName,
+                "Flow Route Start", "", mFlowHandle, taskName);
+
+        newParamsPage.putString("AssignTo", "");
+
+        try {
+            // Expression: 
+            newParamsPage.putString("pxObjClass", "");
+        } catch (java.lang.IllegalArgumentException e) {
+            if (!bDraftMode) {
+                // We've got a flow problem; a page could have been passed in when a property was expected.
+                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
+                return;
+            }
+        }
+
+        try {
+            // Expression: 
+            newParamsPage.putString("CheckAvailability", "");
+        } catch (java.lang.IllegalArgumentException e) {
+            if (!bDraftMode) {
+                // We've got a flow problem; a page could have been passed in when a property was expected.
+                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
+                return;
+            }
+        }
+        // Run the routing activity (RunTaskActivity returns false if it encountered a flow problem)
+        if (!RunTaskActivity(taskName, "ToCurrentOperator", workPage,
+                newParamsPage))
+            return;
+
+        if (pg_tempAssignPage.getString(".pxAssignedOperatorID").length() > 0)
+            pyFlowParametersPage.putString("DefaultAssignTo",
+                    newParamsPage.getString("AssignTo"));
+        else if (newParamsPage.getString("AssignTo").length() > 0) {
+            pyFlowParametersPage.putString("DefaultAssignTo",
+                    newParamsPage.getString("AssignTo"));
+            if (newParamsPage.isDefined("SwitchToWorkbasket"))
+                pyFlowParametersPage.putString("SwitchToWorkbasket",
+                        newParamsPage.getString("SwitchToWorkbasket"));
+        } else
+            pyFlowParametersPage.putString("DefaultAssignTo", "");
+
+        pg_tempAssignPage.removeFromClipboard();
+
+        // Flow Route End tracer message
+        LogTraceEvent(mRuleSet, "Rule-Obj-Activity " + workPage.getClassName()
+                + ".ToCurrentOperator", flowName + " - " + taskName,
+                "Flow Route End",
+                pyFlowParametersPage.getString("DefaultAssignTo"), mFlowHandle,
+                taskName);
+
+        // Set step ending properties
+        currentFlow.putString(".pyLastFlowStep", taskName);
+        currentFlow.putString(".pxLastActivityStatus",
+                tools.findPage("pxThread").getString(".pxTaskStatus"));
+
+        TaskConnectors_Start62_circum0();
+    }
+
+    private void TaskConnectors_Start62_circum0() {
+        bMoreThanAlwaysInDraftMode = false;
+        String strConnectorType = "";
+        String strConnectorValue = "";
+        if (CheckIfFlowHasEnded())
+            return;
+        else if (!pyNextFlowStep.equals(currentFlow
+                .getString(".pyNextFlowStep")))
+            // the flow has jumped to a (different) ticket, just abort this run
+            return;
+
+        // Evaluating the connectors (in order of likelihood)
+        strConnectorType = "ALWAYS";
+        strConnectorValue = "";
+        if (EvaluateConnector(strConnectorType, strConnectorValue, interestPage)) {
+            // Trace Connector event
+            LogTraceEvent(mRuleSet, "ALWAYS", flowName, "Flow Connector", "",
+                    mFlowHandle, "");
+
+            // Perform listed Property-Sets
+
+            // Now set the nextFlowStepToRun to this task
+            nextFlowStepToRun = "AssignmentSF1";
             return;
         } else if (connectorFlowProblem == true)
             return;
@@ -2328,169 +2457,6 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
 
             // Now set the nextFlowStepToRun to this task
             nextFlowStepToRun = "AssignmentSF2";
-            return;
-        } else if (connectorFlowProblem == true)
-            return;
-
-        // Reaching this point means none of the connectors could be taken.
-        StuckFlow();
-    }
-
-    private void Task_Start62_circum0() {
-        String taskName = "Start62";
-        lastFlowStepRun = nextFlowStepToRun;
-        nextFlowStepToRun = ""; // reset it
-        bCalledNonExistentRule = false; // reset it
-        currentFlow.putString("pyCurrentFlowStep", "Start62");
-        currentFlow.putString(".pyCurrentFlowStepLabel", "");
-
-        // Create a vector of this task's contexts
-        java.util.Vector currentContexts = new java.util.Vector();
-
-        // Infinite loop checking code
-        if (taskCalledCount.containsKey(taskName)) {
-            Integer i = (Integer) taskCalledCount.get(taskName);
-            if (i.intValue() > 500) {
-                // we're probably in an infinite loop
-                ProblemFlow("ProblemFlow_InfiniteInnerLoop", taskName);
-                return;
-            } else
-                taskCalledCount.put(taskName, new Integer(i.intValue() + 1));
-        } else
-            taskCalledCount.put(taskName, new Integer(1));
-
-        // Remove old contexts
-        ClipboardProperty cpContexts = currentFlow.getProperty(".pyContexts");
-        java.util.Iterator cons = cpContexts.iterator();
-        while (cons.hasNext()) {
-            ClipboardProperty cpContext = (ClipboardProperty) cons.next();
-            ClipboardPage pgContext = cpContext.getPageValue();
-            String strContextID = pgContext.getString(".pyContextID");
-            if (!currentContexts.contains(strContextID)) {
-                LeaveContext_circum0(strContextID);
-            }
-        }
-
-        // Now add this task's new contexts 
-        ClipboardProperty cpContext;
-
-        // Create a parameter page for this task
-        ParameterPage newParamsPage = createNewParamsPage(taskName);
-
-        try {
-            // Expression: 
-            newParamsPage.putString("pxObjClass", "");
-        } catch (java.lang.IllegalArgumentException e) {
-            if (!bDraftMode) {
-                // We've got a flow problem; a page could have been passed in when a property was expected.
-                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
-                return;
-            }
-        }
-
-        try {
-            // Expression: 
-            newParamsPage.putString("CheckAvailability", "");
-        } catch (java.lang.IllegalArgumentException e) {
-            if (!bDraftMode) {
-                // We've got a flow problem; a page could have been passed in when a property was expected.
-                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
-                return;
-            }
-        }
-
-        // Create a temporary assignment page for the routing activity to access
-        ClipboardPage pg_tempAssignPage = tools.createPage("Assign-",
-                "AssignDefaults");
-        newParamsPage.putString("AssignPage", "AssignDefaults");
-
-        // Update the assignment with the routing skills information
-
-        // Flow Route Start tracer message
-        LogTraceEvent(mRuleSet, "Rule-Obj-Activity " + workPage.getClassName()
-                + ".ToCurrentOperator", flowName + " - " + taskName,
-                "Flow Route Start", "", mFlowHandle, taskName);
-
-        newParamsPage.putString("AssignTo", "");
-
-        try {
-            // Expression: 
-            newParamsPage.putString("pxObjClass", "");
-        } catch (java.lang.IllegalArgumentException e) {
-            if (!bDraftMode) {
-                // We've got a flow problem; a page could have been passed in when a property was expected.
-                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
-                return;
-            }
-        }
-
-        try {
-            // Expression: 
-            newParamsPage.putString("CheckAvailability", "");
-        } catch (java.lang.IllegalArgumentException e) {
-            if (!bDraftMode) {
-                // We've got a flow problem; a page could have been passed in when a property was expected.
-                ProblemFlow(e, currentFlow.getString(".pyLastFlowStep"));
-                return;
-            }
-        }
-        // Run the routing activity (RunTaskActivity returns false if it encountered a flow problem)
-        if (!RunTaskActivity(taskName, "ToCurrentOperator", workPage,
-                newParamsPage))
-            return;
-
-        if (pg_tempAssignPage.getString(".pxAssignedOperatorID").length() > 0)
-            pyFlowParametersPage.putString("DefaultAssignTo",
-                    newParamsPage.getString("AssignTo"));
-        else if (newParamsPage.getString("AssignTo").length() > 0) {
-            pyFlowParametersPage.putString("DefaultAssignTo",
-                    newParamsPage.getString("AssignTo"));
-            if (newParamsPage.isDefined("SwitchToWorkbasket"))
-                pyFlowParametersPage.putString("SwitchToWorkbasket",
-                        newParamsPage.getString("SwitchToWorkbasket"));
-        } else
-            pyFlowParametersPage.putString("DefaultAssignTo", "");
-
-        pg_tempAssignPage.removeFromClipboard();
-
-        // Flow Route End tracer message
-        LogTraceEvent(mRuleSet, "Rule-Obj-Activity " + workPage.getClassName()
-                + ".ToCurrentOperator", flowName + " - " + taskName,
-                "Flow Route End",
-                pyFlowParametersPage.getString("DefaultAssignTo"), mFlowHandle,
-                taskName);
-
-        // Set step ending properties
-        currentFlow.putString(".pyLastFlowStep", taskName);
-        currentFlow.putString(".pxLastActivityStatus",
-                tools.findPage("pxThread").getString(".pxTaskStatus"));
-
-        TaskConnectors_Start62_circum0();
-    }
-
-    private void TaskConnectors_Start62_circum0() {
-        bMoreThanAlwaysInDraftMode = false;
-        String strConnectorType = "";
-        String strConnectorValue = "";
-        if (CheckIfFlowHasEnded())
-            return;
-        else if (!pyNextFlowStep.equals(currentFlow
-                .getString(".pyNextFlowStep")))
-            // the flow has jumped to a (different) ticket, just abort this run
-            return;
-
-        // Evaluating the connectors (in order of likelihood)
-        strConnectorType = "ALWAYS";
-        strConnectorValue = "";
-        if (EvaluateConnector(strConnectorType, strConnectorValue, interestPage)) {
-            // Trace Connector event
-            LogTraceEvent(mRuleSet, "ALWAYS", flowName, "Flow Connector", "",
-                    mFlowHandle, "");
-
-            // Perform listed Property-Sets
-
-            // Now set the nextFlowStepToRun to this task
-            nextFlowStepToRun = "AssignmentSF1";
             return;
         } else if (connectorFlowProblem == true)
             return;
@@ -3650,7 +3616,7 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
 
         pgConnector = tools.createPage("Data-MO-Connector-Transition", "");
         pgConnector.putString("pyMOId", "Transition5");
-        pgConnector.putString("pyMOName", "True");
+        pgConnector.putString("pyMOName", "true");
         pgConnector.putString("pyCoordX", "");
         pgConnector.putString("pyCoordY", "");
         pgConnector.putString("pyWidth", "");
@@ -3707,6 +3673,15 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
         pgShape.putString("pyHeight", "0.48");
         cpShapes.add("SubProcessSF1", pgShape);
 
+        pgShape = tools.createPage("Data-MO-Event-Start-StartScreenFlow", "");
+        pgShape.putString("pyMOId", "Start62");
+        pgShape.putString("pyMOName", "");
+        pgShape.putString("pyCoordX", "-3.136");
+        pgShape.putString("pyCoordY", "0.24");
+        pgShape.putString("pyWidth", "0.48");
+        pgShape.putString("pyHeight", "0.48");
+        cpShapes.add("Start62", pgShape);
+
         pgShape = tools
                 .createPage("Data-MO-Activity-Assignment-WorkAction", "");
         pgShape.putString("pyMOId", "AssignmentSF1");
@@ -3716,15 +3691,6 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
         pgShape.putString("pyWidth", "0.96");
         pgShape.putString("pyHeight", "0.48");
         cpShapes.add("AssignmentSF1", pgShape);
-
-        pgShape = tools.createPage("Data-MO-Event-Start-StartScreenFlow", "");
-        pgShape.putString("pyMOId", "Start62");
-        pgShape.putString("pyMOName", "");
-        pgShape.putString("pyCoordX", "-3.136");
-        pgShape.putString("pyCoordY", "0.24");
-        pgShape.putString("pyWidth", "0.48");
-        pgShape.putString("pyHeight", "0.48");
-        cpShapes.add("Start62", pgShape);
 
         pgShape = tools
                 .createPage("Data-MO-Activity-Assignment-WorkAction", "");
@@ -3788,7 +3754,7 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
         pgStep = tools.createPage("Data-MO-Gateway-Decision", "");
         pgStep.putString(".pyMOId", "Decision1");
         pgStep.putString(".pyMOName", "Selected?");
-        pgStep.putString(".pyImplementation", ".pySelected != true");
+        pgStep.putString(".pyImplementation", "");
         pgStep.putString(".pyCoordX", "1.16");
         pgStep.putString(".pyCoordY", "0.24");
         pgStep.putString(".pyFromMODefName", "Decision");
@@ -4145,18 +4111,13 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
                 newHashShapeValue = "n";
             } else {
                 pgNavPath.getProperty("pyAlwaysRebuild").setValue(true);
-                // Expression: .pySelected != true
-                if ((scalarValueQuery_1.resolveToBoolean(tools, myStepPage,
-                        ImmutablePropertyInfo.TYPE_TRUEFALSE) != true)) {
-                    // Decision shape Boolean Expression evaluates to true and This connector's Result outcome is also set to true
+                if (EvaluateConnector("WHEN", "IsSelected", interestPage)) {
                     newHashShapeValue = "y";
 
                     // concatenate 'taken' to the origin shape's hashmap value to denote that an exclusive path has now been taken
                     hashShapes.put("Decision1", fromShapeValue + "taken");
-                } else {
-                    // Decision shape Boolean Expression evaluates to false and This connector's Result outcome is set to true
+                } else
                     newHashShapeValue = "n";
-                }
             }
         } else {
             // If the origin shape is invalid, then this connector is too; no need to check prior sibling connectors or Whens
@@ -4602,7 +4563,7 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
         if (isAllowedAccess && !hasSecurity) {
             com.pega.pegarules.priv.tracer.RuleTraceInfo ruleTraceInfo = new com.pega.pegarules.priv.tracer.RuleTraceInfo(
                     "RULE-OBJ-FLOW OOO-PGB-WORK-DEMO CREATEFORM_DEFAULT #20211127T110301.884 GMT",
-                    "CreateForm_Default", "PGB", "", "20211128T040107.063 GMT");
+                    "CreateForm_Default", "PGB", "", "20211128T112343.957 GMT");
             if (!tools.hasImplicitPrivilege(ruleTraceInfo)) {
                 return false;
             }
@@ -6114,12 +6075,8 @@ public class Rule_Obj_Flow_OOO_PGB_Work_Demo_CreateForm_Default_Action_20211127T
         return companionFlowName;
     }
 
-    private static final ScalarValueQuery scalarValueQuery_1 = FUAUtil
-            .createQueryBuilder().scalarProperty("pySelected")
-            .buildScalarValueQuery();
-
     private static final com.pega.pegarules.priv.tracer.RuleTraceInfo oTraceInfo_0 = new com.pega.pegarules.priv.tracer.RuleTraceInfo(
             "RULE-OBJ-FLOW OOO-PGB-WORK-DEMO CREATEFORM_DEFAULT #20211127T110301.884 GMT",
             "OOO-PGB-Work-Demo CreateForm_Default", "PGB", "01-01-01",
-            "20211128T040107.063 GMT");
+            "20211128T112343.957 GMT");
 }
