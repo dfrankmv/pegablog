@@ -82,11 +82,15 @@ id: XWURNONRNL
 
 <p>Using the tracer we can get the step where the <i>pyFlowData</i> is populated. The activity responsible for this is <i>Work-.GetFlowData</i> which uses the following function in a Java step.</p>
 
-<pre>pega_processengine_flowutilities.getNavigationPath(interestPage, strFlowClass, strFlowType, pg_pxFlow.getString(".pyParentFlowPath"), "pyFlowData", tools.getParamAsBoolean(PropertyInfo.TYPE_TRUEFALSE, "deferredLoad"));</pre>
+```java
+pega_processengine_flowutilities.getNavigationPath(interestPage, strFlowClass, strFlowType, pg_pxFlow.getString(".pyParentFlowPath"), "pyFlowData", tools.getParamAsBoolean(PropertyInfo.TYPE_TRUEFALSE, "deferredLoad"));
+```
 
 <p>As an example, using the main flow <i>OOO-PGB-Work-Demo.CreateForm_Default</i>, the previous code will translate as follows.</p>
 
-<pre>getNavigationPath(pyWorkPage,"OOO-PGB-Work-Demo","CreateForm_Default","", "pyFlowData", false) </pre>
+```java
+getNavigationPath(pyWorkPage,"OOO-PGB-Work-Demo","CreateForm_Default","", "pyFlowData", false)
+```
 
 <p>The following image shows the <i>getNavigationPath</i> function which invokes the main flow (through the <i>tools.doActivity</i> function). Note that this function is passing the <i>GetNavigationPath</i> parameter as <i>true</i>.</p>
 
