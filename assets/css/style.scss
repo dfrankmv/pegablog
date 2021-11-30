@@ -7,6 +7,10 @@ p, ul, ol, table, pre, dl {
     margin: 0 0 .8em;
 }
 
+b {
+    font-weight: bold;
+}
+
 pre {
     margin: 0 -20px 20px;
     margin-bottom: .8em;
@@ -16,11 +20,17 @@ h3 {
     margin: 0px;
 }
 
+img + h3 {
+    margin-top: 1.5em;
+}
+
 img {
     display: block;
     max-width: calc(100% + 40px);
     margin-left: -20px;
     margin-bottom: 0.8em;
+    border-top: 1px solid #0000004d;
+    border-bottom: 1px solid #0000004d;
 }
 
 .important {
@@ -42,6 +52,7 @@ img {
     margin: 0 auto;
     display: block;
     margin-top: .8em;
+    margin-bottom: .8em;
     border: 1px solid #0000004d;
     max-width: 100%;
 }
@@ -65,8 +76,6 @@ img {
     background-color: #d6f1fb;
     font-style: italic;
     color: #000;
-    border-top: 1px solid #bed6df;
-    border-bottom: 1px solid #bed6df;
 }
 
 .tip b {
@@ -77,6 +86,7 @@ img {
     margin: 0 auto;
     display: block;
     margin-top: .8em;
+    margin-bottom: .8em;
     border: 1px solid #0000004d;
     max-width: 100%;
 }
@@ -88,6 +98,42 @@ img {
 }
 
 .tip em, .tip i {
+    font-style: italic;
+}
+
+.note {
+    margin-left: -20px;
+    margin-bottom: .8em;
+    width: 100%;
+    padding: .8em 20px;
+    margin-left: -20px;
+    background-color: #abbae1;
+    font-style: italic;
+    color: #000;
+    border-top: 1px solid #0000004d;
+    border-bottom: 1px solid #0000004d;
+}
+
+.note b {
+    font-weight: bold;
+}
+
+.note img {
+    margin: 0 auto;
+    display: block;
+    margin-top: .8em;
+    margin-bottom: .8em;
+    border: 1px solid #0000004d;
+    max-width: 100%;
+}
+
+.note::before {
+    content: "Note";
+    display: block;
+    font-weight: bold
+}
+
+.note em, .note i {
     font-style: italic;
 }
 
